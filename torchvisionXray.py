@@ -111,3 +111,15 @@ dl_test = torch.utils.data.DataLoader(test_Dataset, batch_size=1, shuffle=False)
 print(f"The length of trainDataset is {len(dl_train)}")
 print(f"The length of testDataset is {len(dl_test)}")
 
+
+# Data Visualisation
+
+class_names = train_Dataset.class_names
+
+def show_images(images, labels, preds):
+    plt.figure(figsize=(8, 4))
+    for i, image in enumerate(images):
+        plt.subplot(1, 6, i + 1, xticks=[], yticks=[])
+        image = image.numpy().transpose((1, 2, 0))
+        mean = np.arra([0.485, 0.456, 0.406])
+        std = np.array([0.229, 0.224, 0.225])
